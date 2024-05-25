@@ -28,7 +28,6 @@ export const AddTask = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-        console.log(dueDate);
       const response = await axios.post('http://localhost:8081/tasks', {
         title,
         description,
@@ -44,7 +43,7 @@ export const AddTask = () => {
         setOpen(true);
       }
     } catch (error) {
-      console.log(error);
+      console.error(error);
       setAlertType('error');
       setAlertMessage('An error occurred');
       setOpen(true);
@@ -68,8 +67,8 @@ export const AddTask = () => {
         <Typography variant="h4" component="h1" gutterBottom>
           Add Task
         </Typography>
-        <Button variant="contained" color="primary" onClick={handleBack}>
-            Back
+        <Button variant="contained" color="primary" onClick={handleBack} sx={{ mb: 2 }}>
+          Back
         </Button>
         <form onSubmit={handleSubmit}>
           <FormControl fullWidth margin="normal">
@@ -91,8 +90,10 @@ export const AddTask = () => {
             />
           </FormControl>
           <FormControl fullWidth margin="normal">
-            <InputLabel>Status</InputLabel>
+            <InputLabel id="status-label">Status</InputLabel>
             <Select
+              labelId="status-label"
+              label="Status"
               value={status}
               onChange={(e) => setStatus(e.target.value)}
               required
