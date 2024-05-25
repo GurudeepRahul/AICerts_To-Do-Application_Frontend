@@ -116,7 +116,7 @@ export const AddTask = () => {
           </FormControl>
           <Box sx={{ mt: 2 }}>
             <Button type="submit" variant="contained" color="primary" fullWidth>
-              Submit
+              Save
             </Button>
           </Box>
         </form>
